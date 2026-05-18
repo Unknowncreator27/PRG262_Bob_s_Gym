@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRG262_Bob_s_Gym.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,10 @@ namespace PRG262_Bob_s_Gym
     {
 
         public DateTime dtp => DOBPicker.Value;
+
+        //This is to save user details
+        string savedUsername;
+        string savedPassword;
         public Form1()
         {
             InitializeComponent();
@@ -22,6 +27,31 @@ namespace PRG262_Bob_s_Gym
         private void DOBPicker_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            String username = txtUsername.Text;
+            String password = txtPassword.Text;
+
+            if(username =="admin" && password =="gym123")
+            {
+                MessageBox.Show("Login Success");
+                new MemberForm().Show();
+                this.Hide();
+            }
+            else 
+            {
+                MessageBox.Show("Login failed");
+                txtUsername.Clear();
+                txtPassword.Clear();
+                txtUsername.Focus();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
