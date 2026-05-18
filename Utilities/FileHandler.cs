@@ -4,109 +4,107 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PRG262_Bob_s_Gym.Models;
-using PRG262_Bob_s_Gym.Exceptions;
 
-
-namespace PRG262_Bob_s_Gym.Utilities
+namespace FileHandler
 {
-
-    /// <summary>
-    /// Handles all read / write ops for users text file
-    /// \
-    /// </summary>
-    public static class FileHandler
+    public class FileHandler
     {
-        private static readonly string filePath = "users.txt";
+        //File names used for storing data
+        private string _usersFile = @"users.txt";
+        private string _lockedFile = @"locked.txt";
+        private char _separator = '|';
+        private int _maxAttempts = 3;
 
-        /// <summary>
-        /// Read all users from the text file
-        /// </summary>
-        /// 
-        public static List<User> GetAllUsers()
+        //creates files if they don't exist
+        public FileHandler()
         {
-            List<User> users = new List<User>();
-            if (!File.Exists(filePath))
-            {
-                // if the file doe not exist: Create it
-                CreateDefaultAdmin();
-                return GetAllUsers();
-            }
+            if (!File.Exists(_usersFile)) File.Create(_usersFile).Dispose();
+            if (!File.Exists(_lockedFile)) File.Create(_lockedFile).Dispose();
+        }
 
-            string[] lines = File.ReadAllLines(filePath);
+        //Read all users from file into a Dictionary
+        //Dictionary works like a table: username(key) => password(value)
+        private Dictionary<string, string> ReadUsers()
+        {
+            var users = new Dictionary<string, string>();
 
-            foreach (string line in lines)
+            foreach (string line in File.ReadAllLines(_usersFile))
             {
-                if (string.IsNullOrWhiteSpace(line)) continue;
-                string[] parts = line.Split('|');
-                if(parts.Length >= 4)
-                {
-                    users.Add(new User
-                    {
-                        Username = parts[0].Trim(),
-                        Password = parts[1].Trim(),
-                        FailedAttempts = int.Parse(parts[2]),
-                        IsLocked = bool.Parse(parts[3])
-                    });
-                }
+                string[] parts = line.Split(_separator);
+                if (parts.Length == 2)
+                    users[parts[0].Trim()] = parts[1].Trim();
             }
             return users;
         }
 
-        /// <summary>
-        /// Save all users back to the text file
-        /// 
-        /// </summary>
-        /// 
-        public static void SaveAllUsers(List<User> users)
+        //Checks if an account is locked
+        public bool IsLocked(string username)
         {
-            List<string> lines = new List<string>();
-
-            foreach (var user in users)
-            {
-                lines.Add($"{user.Username}|{user.Password}|{user.FailedAttempts}|{user.IsLocked}");
-            }
-
-            File.WriteAllLines(filePath, lines);
+            // Reads the locked.txt and check if username is in there
+            foreach (string line in File.ReadAllLines(_lockedFile))
+                if (line.Trim().Equals(username, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            return false;
         }
 
-        /// <summary>
-        /// Creates a default admin account
-        /// 
-        /// </summary>
-        /// 
-
-        private static void CreateDefaultAdmin()
+        //Saves a new user to users.txt 
+        //Returns false if username already exists
+        public bool SaveUser(string username, string password)
         {
-            var admin = new List<User>()
-            {
-                new User("admin", "admin123")
-            };
-            SaveAllUsers(admin);
+            if (ReadUsers().ContainsKey(username)) return false;
+
+            //AppendText adds to the end without deleting existing lines
+            using (StreamWriter sw = File.AppendText(_usersFile))
+                sw.WriteLine(username + _separator + password);
+
+            return true;
         }
-        /// <summary>
-        /// Updates a single user's login attempts and lock status
-        /// 
-        /// </summary>
-        /// 
-        public static void UpdateUser(User userToUpdate)
-        {
-            try
-            {
-                var users = GetAllUsers();
-                var user = users.Find(u => u.Username == userToUpdate.Username);
-                if (user != null)
-                {
-                    user.FailedAttempts = userToUpdate.FailedAttempts;
-                    user.IsLocked = userToUpdate.IsLocked;
-                    SaveAllUsers(users);
-                }
-            }
-            catch (CustomExceptions.RecordNotFoundException)
-            {
 
-                throw new CustomExceptions.RecordNotFoundException(userToUpdate, "");
+        //Validates login credentials
+        //Returns: "locked", "success", or "failed"
+        public string ValidateLogin(string username, string password)
+        {
+            if (IsLocked(username)) return "locked";
+
+            var users = ReadUsers();
+
+            //Checks if username exists and password matches
+            if (users.ContainsKey(username) && users[username] == password)
+            {
+                //Resets failed attempts on a successful login
+                string attemptFile = "attempts_" + username + ".txt";
+                if (File.Exists(attemptFile)) File.Delete(attemptFile);
+                return "success";
             }
+
+            //Wrong credentials - tracks failed attempt
+            string attFile = "attempts_" + username + ".txt";
+            int attempts = File.Exists(attFile) ? int.Parse(File.ReadAllText(attFile)) : 0;
+            attempts++;
+            File.WriteAllText(attFile, attempts.ToString());
+
+            //Lock account if max attempts reached
+            if (attempts >= _maxAttempts)
+            {
+                File.AppendAllText(_lockedFile, username + Environment.NewLine);
+                return "locked";
+            }
+            //Calculate how many attempts they have left and return it
+            int attemptsLeft = _maxAttempts - attempts;
+            return attemptsLeft.ToString();  // Returns "2", "1" etc.
+        }
+
+        //Unlock an account (admin use)
+        public void UnlockAccount(string username)
+        {
+            //Read all locked accounts, remove this user, rewrite the file
+            var lines = new List<string>(File.ReadAllLines(_lockedFile));
+            lines.RemoveAll(l => l.Trim().Equals(username, StringComparison.OrdinalIgnoreCase));
+            File.WriteAllLines(_lockedFile, lines);
+
+            //Also clear their attempt counter
+            string attFile = "attempts_" + username + ".txt";
+            if (File.Exists(attFile)) File.Delete(attFile);
         }
     }
 }

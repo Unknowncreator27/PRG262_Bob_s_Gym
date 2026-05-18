@@ -22,7 +22,10 @@ namespace PRG262_Bob_s_Gym
         public Form1()
         {
             InitializeComponent();
+            
         }
+
+
 
         private void DOBPicker_ValueChanged(object sender, EventArgs e)
         {
