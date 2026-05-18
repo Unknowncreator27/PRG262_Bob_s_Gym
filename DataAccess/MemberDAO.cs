@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PRG262_Bob_s_Gym.Classes;
+using PRG262_Bob_s_Gym.Exceptions;
+
+
 namespace PRG262_Bob_s_Gym.DataAccess
 {
 
@@ -78,11 +81,18 @@ namespace PRG262_Bob_s_Gym.DataAccess
 
         public DataTable SearchMembers(string searchTerm)
         {
-            SqlParameter[] parameter = { new SqlParameter("@SearchTerm", searchTerm ?? "") };
-            return DBHelper.ExecDataTable("sp_SearchMembers", CommandType.StoredProcedure, parameter);
+            try
+            {
+                SqlParameter[] parameter = { new SqlParameter("@SearchTerm", searchTerm ?? "") };
+                return DBHelper.ExecDataTable("sp_SearchMembers", CommandType.StoredProcedure, parameter);
+            }
+            catch (CustomExceptions.RecordNotFoundException)
+            {
+
+                throw new CustomExceptions.RecordNotFoundException(searchTerm, "");
+            }
         }
 
-<<<<<<< Updated upstream
         /// <summary>
         /// Deletes a member from the database
         /// 
@@ -104,13 +114,13 @@ namespace PRG262_Bob_s_Gym.DataAccess
             {
                 throw new Exception($"Error deleting member: {ex.Message}", ex);
             }
-=======
+
         public DataTable DeleteMember(int Id)
         {
             SqlParameter[] paramter = new SqlParameter("@MemberID", id);
             int rowsAffected = DBHelper.ExecuteNonQ("sp_DeleteMember", CommandType.StoredProcedure, paramter);
             return rowsAffected;
->>>>>>> Stashed changes
+
         }
     }
 }

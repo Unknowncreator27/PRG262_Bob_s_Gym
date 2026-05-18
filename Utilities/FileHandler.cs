@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PRG262_Bob_s_Gym.Models;
+using PRG262_Bob_s_Gym.Exceptions;
+
+
 namespace PRG262_Bob_s_Gym.Utilities
 {
 
@@ -88,13 +91,21 @@ namespace PRG262_Bob_s_Gym.Utilities
         /// 
         public static void UpdateUser(User userToUpdate)
         {
-            var users = GetAllUsers();
-            var user = users.Find(u => u.Username == userToUpdate.Username);
-            if(user != null)
+            try
             {
-                user.FailedAttempts = userToUpdate.FailedAttempts;
-                user.IsLocked = userToUpdate.IsLocked;
-                SaveAllUsers(users);
+                var users = GetAllUsers();
+                var user = users.Find(u => u.Username == userToUpdate.Username);
+                if (user != null)
+                {
+                    user.FailedAttempts = userToUpdate.FailedAttempts;
+                    user.IsLocked = userToUpdate.IsLocked;
+                    SaveAllUsers(users);
+                }
+            }
+            catch (CustomExceptions.RecordNotFoundException)
+            {
+
+                throw new CustomExceptions.RecordNotFoundException(userToUpdate, "");
             }
         }
     }
