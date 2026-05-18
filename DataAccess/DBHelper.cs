@@ -13,7 +13,7 @@ namespace PRG262_Bob_s_Gym.DataAccess
     {
         // ================== CONNECTION STRING ==================
         private static readonly string connectionString =
-            @"Server=Avisto-Desktop\SQLEXPRESS;Database=GymManagementDB;Integrated Security=True;";
+            @"Server=HANRO\BOB_S_GYM;Database=GymManagementDB;Integrated Security=True;";
 
         /// <summary>
         /// Returns an open SqlConnection. 
