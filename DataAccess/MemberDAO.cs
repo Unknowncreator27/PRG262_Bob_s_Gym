@@ -98,7 +98,7 @@ namespace PRG262_Bob_s_Gym.DataAccess
         /// 
         /// </summary>
         /// <param name="memberID">ID of the member to delete</param>
-        
+
         public bool DeleteMember(int memberID)
         {
             try
@@ -110,10 +110,12 @@ namespace PRG262_Bob_s_Gym.DataAccess
 
                 int rowsAffected = DBHelper.ExecuteNonQ("sp_DeleteMember", CommandType.StoredProcedure, parameter);
                 return rowsAffected > 0;
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception($"Error deleting member: {ex.Message}", ex);
             }
+        }
 
         public DataTable DeleteMember(int Id)
         {
