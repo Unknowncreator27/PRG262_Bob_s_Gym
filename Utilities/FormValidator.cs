@@ -9,7 +9,7 @@ namespace PRG262_Bob_s_Gym.Utilities
 {
     internal class FormValidator
     {
-        // Your teammates can call this on ANY form to check for empty fields
+        // You guys can call this on ANY form to check for empty fields
         public static void CheckRequiredFields(params string[] fields)
         {
             foreach (var field in fields)
