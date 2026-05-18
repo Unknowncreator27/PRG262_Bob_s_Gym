@@ -77,6 +77,14 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE sp_GetAllMembers
+AS
+BEGIN
+SELECT * FROM Members
+ORDER BY CreatedDate ASC;
+END
+GO
+
 CREATE PROCEDURE sp_GetMemberByID
     @MemberID INT
 AS

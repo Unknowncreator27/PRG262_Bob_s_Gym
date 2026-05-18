@@ -23,5 +23,33 @@ namespace PRG262_Bob_s_Gym
         {
 
         }
+<<<<<<< Updated upstream
+=======
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            String username = txtUsername.Text;
+            String password = txtPassword.Text;
+
+            if(username == "admin" && password =="gym123")
+            {
+                MessageBox.Show("Login Success");
+                new MemberForm().Show();
+                this.Hide();
+            }
+            else 
+            {
+                MessageBox.Show("Login failed");
+                txtUsername.Clear();
+                txtPassword.Clear();
+                txtUsername.Focus();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+>>>>>>> Stashed changes
     }
 }
