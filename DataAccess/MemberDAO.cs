@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PRG262_Bob_s_Gym.Classes;
-//using PRG262_Bob_s_Gym.Exceptions;
+using PRG262_Bob_s_Gym.Exceptions;
 
 
 namespace PRG262_Bob_s_Gym.DataAccess

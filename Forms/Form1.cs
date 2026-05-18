@@ -14,6 +14,7 @@ namespace PRG262_Bob_s_Gym
 {
     public partial class Form1 : Form
     {
+        FileHandler handler = new FileHandler();
 
         public DateTime dtp => DOBPicker.Value;
 
@@ -23,6 +24,8 @@ namespace PRG262_Bob_s_Gym
         public Form1()
         {
             InitializeComponent();
+            
+            handler.CreateDefaultAdmin();
             
         }
 
@@ -45,7 +48,7 @@ namespace PRG262_Bob_s_Gym
                 return;
             }
 
-            FileHandler handler = new FileHandler();
+            
             string result = handler.ValidateLogin(username, password);
 
             switch (result)

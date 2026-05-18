@@ -1,0 +1,12 @@
+* [33m0f79fef[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m fixing the forms
+* [33m097b693[m Fixed forms
+* [33me9ddda0[m modfied some files
+* [33mef8ce1f[m Merged Forms with the master branch
+* [33m3fc85f2[m Modified the Exceptions
+* [33m6e93eb5[m Merged some files
+*   [33mb237037[m Merged Forms
+[32m|[m[33m\[m  
+[32m|[m * [33ma4ab565[m[33m ([m[1;31morigin/Forms[m[33m, [m[1;32mForms[m[33m)[m Created Membership form that adds members into its database.
+* [33m|[m   [33mede060f[m Merge branch 'Exception-Handling' Merged Exception-Handling branch
+[34m|[m[35m\[m [33m\[m  
+[34m|[m * [33m|[m [33m6282467[m[33m ([m[1;31morigin/Exception-Handling[m[33m, [m[1;32mException-Handling[m[33m)[m Update comment for clarity on form validation
