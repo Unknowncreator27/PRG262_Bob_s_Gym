@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PRG262_Bob_s_Gym.Classes;
-using PRG262_Bob_s_Gym.Exceptions;
+//using PRG262_Bob_s_Gym.Exceptions;
 
 
 namespace PRG262_Bob_s_Gym.DataAccess
@@ -117,12 +117,5 @@ namespace PRG262_Bob_s_Gym.DataAccess
             }
         }
 
-        public DataTable DeleteMember(int Id)
-        {
-            SqlParameter[] paramter = new SqlParameter("@MemberID", id);
-            int rowsAffected = DBHelper.ExecuteNonQ("sp_DeleteMember", CommandType.StoredProcedure, paramter);
-            return rowsAffected;
-
-        }
     }
 }

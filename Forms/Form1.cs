@@ -46,7 +46,7 @@ namespace PRG262_Bob_s_Gym
             }
 
             FileHandler handler = new FileHandler();
-            strign result = handler.ValidateLogin(username, password);
+            string result = handler.ValidateLogin(username, password);
 
             switch (result)
             {
