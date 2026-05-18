@@ -25,7 +25,7 @@ namespace PRG262_Bob_s_Gym
         {
             InitializeComponent();
             
-            handler.CreateDefaultAdmin();
+            handler.CreateDefaultAdminIfNotExists();
             
         }
 

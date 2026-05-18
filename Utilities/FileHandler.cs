@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using static PRG262_Bob_s_Gym.Exceptions.CustomExceptions;
 
-namespace PRG262_Bob_s_Gym.Utilities
+namespace Utilities
 {
     public class FileHandler
     {
@@ -28,7 +28,7 @@ namespace PRG262_Bob_s_Gym.Utilities
         }
 
         // ================== DEFAULT ADMIN ==================
-        private void CreateDefaultAdminIfNotExists()
+        public void CreateDefaultAdminIfNotExists()
         {
             if (ReadUsers().Count == 0)
             {
