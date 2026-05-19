@@ -59,8 +59,8 @@ namespace PRG262_Bob_s_Gym.Forms
         private void btnManageClasses_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //FrmClasses classes = new FrmClasses();
-            //FrmClasses.ShowDialog();
+            FrmClasses classes = new FrmClasses();
+            classes.ShowDialog();
             this.Show();
         }
 

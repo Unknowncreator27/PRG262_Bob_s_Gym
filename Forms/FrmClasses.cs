@@ -20,6 +20,7 @@ namespace PRG262_Bob_s_Gym.Forms
         public FrmClasses()
         {
             InitializeComponent();
+            classDAO = new ClassDAO();
             LoadAllClasses();
         }
 

@@ -8,7 +8,7 @@ namespace PRG262_Bob_s_Gym.Exceptions
 {
     internal class CustomExceptions: Exception
     {
-        // --- AUTHENTICATION EXCEPTIONS ---
+        // --- AUTHENTICATION EXCEPTIONS For all Files---
 
         // Requirement: "After three failed login attempts, lock the account"
         public class AccountLockedException : Exception
@@ -23,7 +23,7 @@ namespace PRG262_Bob_s_Gym.Exceptions
         public class IncompleteFormException : Exception
         {
             public IncompleteFormException()
-                : base("All required fields must be filled out before submitting.") { }
+                : base("All required fields must be filled out before submitting (Required).") { }
         }
 
         // Requirement: "Membership Start Date" vs "Membership End Date"
