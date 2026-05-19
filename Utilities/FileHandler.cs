@@ -1,4 +1,5 @@
-﻿using PRG262_Bob_s_Gym.Exceptions;
+﻿using PRG262_Bob_s_Gym.DataAccess;
+using PRG262_Bob_s_Gym.Exceptions;
 using PRG262_Bob_s_Gym.Models;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,12 @@ namespace Utilities
         // ================== DEFAULT ADMIN ==================
         public void CreateDefaultAdminIfNotExists()
         {
+            
             if (ReadUsers().Count == 0)
             {
                 User user = new User("Admin", "admin");
-                SaveUser(user.Username, user.Password);
+                SaveUser(user);
+               
             }
         }
 
@@ -67,41 +70,47 @@ namespace Utilities
         }
 
         // ================== SAVE USER ==================
-        public bool SaveUser(string username, string password)
+        public bool SaveUser(User user)
         {
-            if (ReadUsers().ContainsKey(username))
+            if(user == null || String.IsNullOrWhiteSpace(user.Username))
+            {
+                throw new ArgumentException("Invalid User");
+            }
+            if (ReadUsers().ContainsKey(user.Username))
                 throw new DuplicateEntryException("username");
 
             using (StreamWriter sw = File.AppendText(_usersFile))
             {
-                sw.WriteLine(username + _separator + password);
+                sw.WriteLine(user.Username + _separator + user.Password);
             }
             return true;
         }
 
         // ================== VALIDATE LOGIN ==================
-        public string ValidateLogin(string username, string password)
+        public string ValidateLogin(User user)
         {
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if(user == null || String.IsNullOrWhiteSpace(user.Username))
+            {
                 return "failed";
+            }
 
-            if (IsLocked(username)) return "locked";
+            if (IsLocked(user.Username)) return "locked";
 
             var users = ReadUsers();
 
-            if (users.ContainsKey(username) && users[username] == password)
+            if (users.ContainsKey(user.Username) && users[user.Username] == user.Password)
             {
-                ResetFailedAttempts(username);
+                ResetFailedAttempts(user.Username);
                 return "success";
             }
 
             // Failed login
-            int attempts = GetFailedAttempts(username) + 1;
-            SaveFailedAttempts(username, attempts);
+            int attempts = GetFailedAttempts(user.Username) + 1;
+            SaveFailedAttempts(user.Username, attempts);
 
             if (attempts >= _maxAttempts)
             {
-                LockAccount(username);
+                LockAccount(user.Username);
                 return "locked";
             }
 
@@ -109,7 +118,7 @@ namespace Utilities
             return attemptsLeft.ToString();
         }
 
-        // ================== FAILED ATTEMPTS HELPERS ==================
+        
         private int GetFailedAttempts(string username)
         {
             string attFile = $"attempts_{username}.txt";
@@ -136,7 +145,7 @@ namespace Utilities
             File.AppendAllText(_lockedFile, username + Environment.NewLine);
         }
 
-        // ================== ADMIN UNLOCK ==================
+        
         public void UnlockAccount(string username)
         {
             if (string.IsNullOrWhiteSpace(username)) return;

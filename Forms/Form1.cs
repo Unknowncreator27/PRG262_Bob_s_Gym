@@ -1,14 +1,8 @@
 ﻿using PRG262_Bob_s_Gym.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PRG262_Bob_s_Gym.Models;
 using System.Windows.Forms;
-using PRG262_Bob_s_Gym.Utilities;
+
 using Utilities;
 namespace PRG262_Bob_s_Gym
 {
@@ -48,38 +42,56 @@ namespace PRG262_Bob_s_Gym
                 return;
             }
 
-            
-            string result = handler.ValidateLogin(username, password);
 
-            switch (result)
+            try
             {
-                case "success":
-                    MessageBox.Show($"Welcome back {username}!", "Login Successfull",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    MemberForm memberFrm = new MemberForm();
-                    memberFrm.Show();
-                    this.Close();
-                    break;
-                case "locked":
-                    MessageBox.Show("This account has been locked due to too many failed attempts, Contact the administrator.",
-                        "Account locked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                default:
-                    if(int.TryParse(result, out int attemptsLeft))
-                    {
-                        MessageBox.Show($"Invalid Password, {attemptsLeft} attempt(s) remaining.",
-                            "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    } else
-                    {
-                        MessageBox.Show("Invalid username or password.", "Login Failed",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                User loginUser = new User()
+                {
+                    Username = username,
+                    Password = password
+                };
 
-                    txtPassword.Clear();
-                    txtUsername.Clear();
-                    break;
+                string result = handler.ValidateLogin(loginUser);
+
+
+                switch (result)
+                {
+                    case "success":
+                        MessageBox.Show($"Welcome back {username}!", "Login Successfull",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        MemberForm memberFrm = new MemberForm();
+                        memberFrm.Show();
+                        //this.Close();
+                        break;
+                    case "locked":
+                        MessageBox.Show("This account has been locked due to too many failed attempts, Contact the administrator.",
+                            "Account locked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                    default:
+                        if (int.TryParse(result, out int attemptsLeft))
+                        {
+                            MessageBox.Show($"Invalid Password, {attemptsLeft} attempt(s) remaining.",
+                                "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid username or password.", "Login Failed",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                        txtPassword.Clear();
+                        txtUsername.Clear();
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"An error occurred during login: \n{ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             //if(username =="admin" && password =="gym123")
             //{

@@ -1,37 +1,32 @@
 ﻿using PRG262_Bob_s_Gym.DataAccess;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PRG262_Bob_s_Gym.Exceptions;
 using System.Windows.Forms;
 
 namespace PRG262_Bob_s_Gym.Forms
 {
     public partial class MemberForm : Form
     {
+        private readonly MemberDAO memberDAO = new MemberDAO();
         public MemberForm()
         {
             InitializeComponent();
         }
 
-        //Read fields into a SqlCommand
-        private void SetParameters(SqlCommand cmd)
+        private void LoadAllMembers()
         {
-            cmd.Parameters.AddWithValue("@MembershipID", txtMembershipID.Text.Trim());
-            cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text.Trim());
-            cmd.Parameters.AddWithValue("@LastName", txtLastName.Text.Trim());
-            cmd.Parameters.AddWithValue("@DateOfBirth", DOBPicker.Value.Date);
-            cmd.Parameters.AddWithValue("@Gender", cmbGender.Text);
-            cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text.Trim());
-            cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
-            cmd.Parameters.AddWithValue("@TrainingProgram", txtTrainingProgram.Text.Trim());
-            cmd.Parameters.AddWithValue("@MembershipStart", dtpStartDate.Value.Date);
-            cmd.Parameters.AddWithValue("@MembershipEnd", dtpEndDate.Value.Date);
+            try
+            {
+                 
+                DataTable dt = memberDAO.GetAllMembers();
+                dgvUsers.DataSource = dt;
+            } catch(Exception ex)
+            {
+                MessageBox.Show($"Error loading members, {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Clear all fields
@@ -66,162 +61,143 @@ namespace PRG262_Bob_s_Gym.Forms
         {
             if (!ValidateFields()) return;
 
-            string query = @"INSERT INTO Members 
-                        (MembershipID, FirstName, LastName, DateOfBirth, Gender,
-                         PhoneNumber, Address, TrainingProgram, MembershipStart, MembershipEnd)
-                        VALUES 
-                        (@MembershipID, @FirstName, @LastName, @DateOfBirth, @Gender,
-                         @PhoneNumber, @Address, @TrainingProgram, @MembershipStart, @MembershipEnd)";
+            Member member = new Member
+            {
+                FirstName = txtFirstName.Text.Trim(),
+                LastName = txtLastName.Text.Trim(),
+                DOB = DOBPicker.Value.Date,
+                Gender = cmbGender.Text,
+                PhoneNumber = txtPhoneNumber.Text.Trim(),
+                Address = txtAddress.Text.Trim(),
+                TrainingProgram = txtTrainingProgram.Text.Trim(),
+                MembershipStartDate = dtpStartDate.Value.Date,
+                MembershipEndDate = dtpEndDate.Value.Date
+
+            };
+
             try
             {
-                using (SqlConnection conn = DBHelper.CreateConnection())
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    SetParameters(cmd);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Member created successfully!", "Success",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ClearFields();
-                    ReadAllMembers();
-                    
-                }
+                int newID = memberDAO.AddMember(member);
+
+                MessageBox.Show($"Member created successfully! ID: {newID}.", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearFields();
+                LoadAllMembers();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Create Failed",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show($"Error creating member: {ex}.", "Create Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void readBtn_Click(object sender, EventArgs e)
         {
-            ReadAllMembers();
+            LoadAllMembers();
         }
 
-        private void ReadAllMembers()
-        {
-            string query = "SELECT * FROM Members";
-            try
-            {
-                using (SqlConnection conn = DBHelper.CreateConnection())
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dataGridView1.DataSource = dt;  // replace with your DataGridView name
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Read Failed",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //private void ReadAllMembers()
+        //{
+        //    string query = "SELECT * FROM Members";
+        //    try
+        //    {
+        //        using (SqlConnection conn = DBHelper.CreateConnection())
+        //        using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+        //        {
+        //            DataTable dt = new DataTable();
+        //            adapter.Fill(dt);
+        //            dgvUsers.DataSource = dt;  // replace with your DataGridView name
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message, "Read Failed",
+        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void update_Click(object sender, EventArgs e)
         {
+
+            if(dgvUsers.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a member to update", "No Selection");
+                return;
+            }
             if (!ValidateFields()) return;
 
-            string query = @"UPDATE Members SET
-                            FirstName       = @FirstName,
-                            LastName        = @LastName,
-                            DateOfBirth     = @DateOfBirth,
-                            Gender          = @Gender,
-                            PhoneNumber     = @PhoneNumber,
-                            Address         = @Address,
-                            TrainingProgram = @TrainingProgram,
-                            MembershipStart = @MembershipStart,
-                            MembershipEnd   = @MembershipEnd
-                         WHERE MembershipID = @MembershipID";
+            int memberID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["MemberID"].Value);
+
+            var updatedMember = new Member
+            {
+                MemberID = memberID,
+                FirstName = txtFirstName.Text.Trim(),
+                LastName = txtLastName.Text.Trim(),
+                DOB = DOBPicker.Value.Date,
+                Gender = cmbGender.Text,
+                PhoneNumber = txtPhoneNumber.Text.Trim(),
+                Address = txtAddress.Text.Trim(),
+                TrainingProgram = txtTrainingProgram.Text.Trim(),
+                MembershipStartDate = dtpStartDate.Value.Date,
+                MembershipEndDate = dtpEndDate.Value.Date
+            };
+
             try
             {
-                using (SqlConnection conn = DBHelper.CreateConnection())
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                bool success = memberDAO.UpdateMember(updatedMember);
+                if (success)
                 {
-                    SetParameters(cmd);
-                    conn.Open();
-                    int rows = cmd.ExecuteNonQuery();
-                    if (rows > 0)
-                    {
-                        MessageBox.Show("Member updated successfully!", "Success",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearFields();
-                        ReadAllMembers();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No member found with that ID.", "Not Found",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("Member updated successfully", "Success");
+                    ClearFields();
+                    LoadAllMembers();
                 }
-            }
-            catch (Exception ex)
+            } catch (CustomExceptions.DuplicateEntryException ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Update Failed",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error updating user: {ex.Message}.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } catch(Exception ex)
+            {
+                MessageBox.Show($"Error updating user: {ex.Message}.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtMembershipID.Text))
+            if(dgvUsers.CurrentRow == null)
             {
-                MessageBox.Show("Enter a MembershipID to delete.", "Validation",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a member to delete.");
                 return;
             }
+            int memberID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["MemberID"].Value);
+            string memberName = dgvUsers.CurrentRow.Cells["FirstName"]?.Value?.ToString() ?? "this member";
 
-            var confirm = MessageBox.Show("Are you sure you want to delete this member?",
+            var confirm = MessageBox.Show($"Are you sure you want to delete {memberName}?",
                                           "Confirm Delete",
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (confirm != DialogResult.Yes) return;
 
-            string query = "DELETE FROM Members WHERE MembershipID = @MembershipID";
             try
             {
-                using (SqlConnection conn = DBHelper.CreateConnection())
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                bool success = memberDAO.DeleteMember(memberID);
+                if (success)
                 {
-                    cmd.Parameters.AddWithValue("@MembershipID", txtMembershipID.Text.Trim());
-                    conn.Open();
-                    int rows = cmd.ExecuteNonQuery();
-                    if (rows > 0)
-                    {
-                        MessageBox.Show("Member deleted successfully!", "Success",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ClearFields();
-                        ReadAllMembers();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No member found with that ID.", "Not Found",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("Member deleted successfully", "Success");
+                    ClearFields();
+                    LoadAllMembers();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Delete Failed",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                MessageBox.Show($"Error deleting member, {ex.Message}.", "Delete Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                   
             }
-        }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0) return;
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-            txtMembershipID.Text = row.Cells["MembershipID"].Value.ToString();
-            txtFirstName.Text = row.Cells["FirstName"].Value.ToString();
-            txtLastName.Text = row.Cells["LastName"].Value.ToString();
-            DOBPicker.Value = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
-            cmbGender.Text = row.Cells["Gender"].Value.ToString();
-            txtPhoneNumber.Text = row.Cells["PhoneNumber"].Value.ToString();
-            txtAddress.Text = row.Cells["Address"].Value.ToString();
-            txtTrainingProgram.Text = row.Cells["TrainingProgram"].Value.ToString();
-            dtpStartDate.Value = Convert.ToDateTime(row.Cells["MembershipStart"].Value);
-            dtpEndDate.Value = Convert.ToDateTime(row.Cells["MembershipEnd"].Value);
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -229,5 +205,29 @@ namespace PRG262_Bob_s_Gym.Forms
             Application.Exit();
         }
 
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dgvUsers.Rows[e.RowIndex];
+
+            txtMembershipID.Text = row.Cells["MemberID"].Value?.ToString();
+            txtFirstName.Text = row.Cells["FirstName"].Value?.ToString();
+            txtLastName.Text = row.Cells["LastName"].Value?.ToString();
+            txtPhoneNumber.Text = row.Cells["PhoneNumber"].Value?.ToString();
+            txtAddress.Text = row.Cells["Address"].Value?.ToString();
+            txtTrainingProgram.Text = row.Cells["TrainingProgram"].Value?.ToString();
+
+            if (row.Cells["DateOfBirth"].Value != DBNull.Value)
+                DOBPicker.Value = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
+
+            cmbGender.Text = row.Cells["Gender"].Value?.ToString() ?? "";
+
+            if (row.Cells["MembershipStartDate"].Value != DBNull.Value)
+                dtpStartDate.Value = Convert.ToDateTime(row.Cells["MembershipStartDate"].Value);
+
+            if (row.Cells["MembershipEndDate"].Value != DBNull.Value)
+                dtpEndDate.Value = Convert.ToDateTime(row.Cells["MembershipEndDate"].Value);
+        }
     }
 }

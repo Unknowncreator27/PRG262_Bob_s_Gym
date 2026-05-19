@@ -64,9 +64,8 @@
             this.txtUsername.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtUsername.Location = new System.Drawing.Point(452, 264);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(265, 29);
+            this.txtUsername.Size = new System.Drawing.Size(265, 38);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
@@ -74,9 +73,8 @@
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Location = new System.Drawing.Point(452, 357);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(265, 32);
+            this.txtPassword.Size = new System.Drawing.Size(265, 38);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             // 

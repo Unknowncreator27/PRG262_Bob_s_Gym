@@ -50,13 +50,13 @@
             this.readBtn = new System.Windows.Forms.Button();
             this.update = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.DOBPicker = new System.Windows.Forms.DateTimePicker();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.exitBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // txtMembershipID
@@ -64,7 +64,7 @@
             this.txtMembershipID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtMembershipID.Location = new System.Drawing.Point(221, 76);
             this.txtMembershipID.Name = "txtMembershipID";
-            this.txtMembershipID.Size = new System.Drawing.Size(200, 26);
+            this.txtMembershipID.Size = new System.Drawing.Size(200, 38);
             this.txtMembershipID.TabIndex = 0;
             // 
             // label1
@@ -77,7 +77,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(29, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(339, 22);
+            this.label1.Size = new System.Drawing.Size(571, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter your details";
             // 
@@ -91,7 +91,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Location = new System.Drawing.Point(30, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 17);
+            this.label2.Size = new System.Drawing.Size(185, 30);
             this.label2.TabIndex = 2;
             this.label2.Text = "MembershipID";
             // 
@@ -105,7 +105,7 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Location = new System.Drawing.Point(30, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 17);
+            this.label3.Size = new System.Drawing.Size(141, 30);
             this.label3.TabIndex = 3;
             this.label3.Text = "First Name";
             // 
@@ -119,7 +119,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Location = new System.Drawing.Point(22, 172);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 17);
+            this.label4.Size = new System.Drawing.Size(136, 30);
             this.label4.TabIndex = 4;
             this.label4.Text = "Last Name";
             // 
@@ -133,7 +133,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label5.Location = new System.Drawing.Point(22, 215);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 17);
+            this.label5.Size = new System.Drawing.Size(168, 30);
             this.label5.TabIndex = 5;
             this.label5.Text = "Date of Birth";
             // 
@@ -147,7 +147,7 @@
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label6.Location = new System.Drawing.Point(22, 260);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 17);
+            this.label6.Size = new System.Drawing.Size(98, 30);
             this.label6.TabIndex = 6;
             this.label6.Text = "Gender";
             // 
@@ -161,7 +161,7 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(22, 311);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 17);
+            this.label7.Size = new System.Drawing.Size(188, 30);
             this.label7.TabIndex = 7;
             this.label7.Text = "Phone Number";
             // 
@@ -175,7 +175,7 @@
             this.label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Location = new System.Drawing.Point(22, 358);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(66, 17);
+            this.label8.Size = new System.Drawing.Size(109, 30);
             this.label8.TabIndex = 8;
             this.label8.Text = "Address";
             // 
@@ -189,7 +189,7 @@
             this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label9.Location = new System.Drawing.Point(22, 401);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(134, 17);
+            this.label9.Size = new System.Drawing.Size(226, 30);
             this.label9.TabIndex = 9;
             this.label9.Text = "Training Program";
             // 
@@ -203,7 +203,7 @@
             this.label10.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label10.Location = new System.Drawing.Point(22, 442);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(171, 17);
+            this.label10.Size = new System.Drawing.Size(288, 30);
             this.label10.TabIndex = 10;
             this.label10.Text = "Membership Start Date";
             // 
@@ -217,7 +217,7 @@
             this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label11.Location = new System.Drawing.Point(22, 485);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(164, 17);
+            this.label11.Size = new System.Drawing.Size(273, 30);
             this.label11.TabIndex = 11;
             this.label11.Text = "Membership End Date";
             // 
@@ -226,35 +226,35 @@
             this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtFirstName.Location = new System.Drawing.Point(221, 117);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(200, 26);
+            this.txtFirstName.Size = new System.Drawing.Size(200, 38);
             this.txtFirstName.TabIndex = 12;
             // 
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(221, 163);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(200, 26);
+            this.txtLastName.Size = new System.Drawing.Size(200, 38);
             this.txtLastName.TabIndex = 13;
             // 
             // txtPhoneNumber
             // 
             this.txtPhoneNumber.Location = new System.Drawing.Point(221, 302);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(200, 26);
+            this.txtPhoneNumber.Size = new System.Drawing.Size(200, 38);
             this.txtPhoneNumber.TabIndex = 16;
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(221, 349);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(200, 26);
+            this.txtAddress.Size = new System.Drawing.Size(200, 38);
             this.txtAddress.TabIndex = 17;
             // 
             // txtTrainingProgram
             // 
             this.txtTrainingProgram.Location = new System.Drawing.Point(221, 396);
             this.txtTrainingProgram.Name = "txtTrainingProgram";
-            this.txtTrainingProgram.Size = new System.Drawing.Size(200, 26);
+            this.txtTrainingProgram.Size = new System.Drawing.Size(200, 38);
             this.txtTrainingProgram.TabIndex = 18;
             // 
             // createBtn
@@ -309,36 +309,36 @@
             this.deleteBtn.UseVisualStyleBackColor = false;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // dataGridView1
+            // dgvUsers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(540, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(543, 358);
-            this.dataGridView1.TabIndex = 25;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsers.Location = new System.Drawing.Point(540, 76);
+            this.dgvUsers.Name = "dgvUsers";
+            this.dgvUsers.RowHeadersWidth = 62;
+            this.dgvUsers.RowTemplate.Height = 28;
+            this.dgvUsers.Size = new System.Drawing.Size(543, 358);
+            this.dgvUsers.TabIndex = 25;
+            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // DOBPicker
             // 
             this.DOBPicker.Location = new System.Drawing.Point(221, 206);
             this.DOBPicker.Name = "DOBPicker";
-            this.DOBPicker.Size = new System.Drawing.Size(200, 26);
+            this.DOBPicker.Size = new System.Drawing.Size(200, 38);
             this.DOBPicker.TabIndex = 26;
             // 
             // dtpStartDate
             // 
             this.dtpStartDate.Location = new System.Drawing.Point(221, 442);
             this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpStartDate.Size = new System.Drawing.Size(200, 38);
             this.dtpStartDate.TabIndex = 27;
             // 
             // dtpEndDate
             // 
             this.dtpEndDate.Location = new System.Drawing.Point(221, 485);
             this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(200, 26);
+            this.dtpEndDate.Size = new System.Drawing.Size(200, 38);
             this.dtpEndDate.TabIndex = 28;
             // 
             // cmbGender
@@ -349,7 +349,7 @@
             "Female"});
             this.cmbGender.Location = new System.Drawing.Point(221, 249);
             this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(200, 28);
+            this.cmbGender.Size = new System.Drawing.Size(200, 39);
             this.cmbGender.TabIndex = 29;
             // 
             // exitBtn
@@ -375,7 +375,7 @@
             this.Controls.Add(this.dtpEndDate);
             this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.DOBPicker);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUsers);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.update);
             this.Controls.Add(this.readBtn);
@@ -399,7 +399,7 @@
             this.Controls.Add(this.txtMembershipID);
             this.Name = "MemberForm";
             this.Text = "MemberForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,7 +428,7 @@
         private System.Windows.Forms.Button readBtn;
         private System.Windows.Forms.Button update;
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.DateTimePicker DOBPicker;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
