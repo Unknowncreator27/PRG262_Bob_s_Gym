@@ -18,7 +18,7 @@ namespace PRG262_Bob_s_Gym
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 form = new Form1();
+            loginFrm form = new loginFrm();
             Application.Run(form);
 
         }

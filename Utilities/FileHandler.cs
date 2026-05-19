@@ -22,11 +22,49 @@ namespace Utilities
             CreateDefaultAdminIfNotExists();
         }
 
+        public static void SaveAllUsers(List<User> users)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (var user in users)
+            {
+                lines.Add($"{user.Username}|{user.Password}|{user.FailedAttempts}|{user.IsLocked}");
+            }
+
+            File.WriteAllLines(@"users.txt", lines);
+        }
+
         private void EnsureFilesExist()
         {
             if (!File.Exists(_usersFile)) File.Create(_usersFile).Dispose();
             if (!File.Exists(_lockedFile)) File.Create(_lockedFile).Dispose();
         }
+
+        public static List<User> GetAllUsers(string _usersFile)
+        {
+
+
+            string[] lines = File.ReadAllLines(_usersFile);
+            List<User> users = new List<User>();
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
+                string[] parts = line.Split('|');
+                if (parts.Length >= 4)
+                {
+                    users.Add(new User
+                    {
+                        Username = parts[0].Trim(),
+                        Password = parts[1].Trim(),
+                        FailedAttempts = int.Parse(parts[2]),
+                        IsLocked = bool.Parse(parts[3])
+                    });
+                }
+            }
+            return users;
+        }
+
+
 
         // ================== DEFAULT ADMIN ==================
         public void CreateDefaultAdminIfNotExists()

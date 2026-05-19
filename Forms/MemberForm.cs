@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using PRG262_Bob_s_Gym.Exceptions;
 using System.Windows.Forms;
+using PRG262_Bob_s_Gym.Models;
 
 namespace PRG262_Bob_s_Gym.Forms
 {
@@ -98,26 +99,7 @@ namespace PRG262_Bob_s_Gym.Forms
             LoadAllMembers();
         }
 
-        //private void ReadAllMembers()
-        //{
-        //    string query = "SELECT * FROM Members";
-        //    try
-        //    {
-        //        using (SqlConnection conn = DBHelper.CreateConnection())
-        //        using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
-        //        {
-        //            DataTable dt = new DataTable();
-        //            adapter.Fill(dt);
-        //            dgvUsers.DataSource = dt;  // replace with your DataGridView name
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error: " + ex.Message, "Read Failed",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
-
+       
         private void update_Click(object sender, EventArgs e)
         {
 
@@ -230,5 +212,7 @@ namespace PRG262_Bob_s_Gym.Forms
             if (row.Cells["MembershipEndDate"].Value != DBNull.Value)
                 dtpEndDate.Value = Convert.ToDateTime(row.Cells["MembershipEndDate"].Value);
         }
+
+
     }
 }
