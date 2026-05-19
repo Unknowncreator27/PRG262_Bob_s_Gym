@@ -77,6 +77,7 @@
             this.txtPassword.Size = new System.Drawing.Size(265, 38);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // loginLbl
             // 

@@ -112,5 +112,15 @@ namespace PRG262_Bob_s_Gym
         {
             Application.Exit();
         }
+
+        
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                loginBtn_Click(sender, e);
+            }
+        }
     }
 }

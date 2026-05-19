@@ -13,6 +13,7 @@ namespace PRG262_Bob_s_Gym.Forms
         public MemberForm()
         {
             InitializeComponent();
+            LoadAllMembers();
         }
 
         private void LoadAllMembers()
