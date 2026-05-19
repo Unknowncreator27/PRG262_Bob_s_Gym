@@ -55,20 +55,22 @@
             // dgvClasses
             // 
             this.dgvClasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClasses.Location = new System.Drawing.Point(754, 311);
+            this.dgvClasses.Location = new System.Drawing.Point(283, 130);
+            this.dgvClasses.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.dgvClasses.Name = "dgvClasses";
             this.dgvClasses.RowHeadersWidth = 102;
             this.dgvClasses.RowTemplate.Height = 40;
-            this.dgvClasses.Size = new System.Drawing.Size(1081, 692);
+            this.dgvClasses.Size = new System.Drawing.Size(405, 290);
             this.dgvClasses.TabIndex = 0;
             this.dgvClasses.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClasses_CellClick);
             // 
             // btnAddClass
             // 
             this.btnAddClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
-            this.btnAddClass.Location = new System.Drawing.Point(754, 1047);
+            this.btnAddClass.Location = new System.Drawing.Point(283, 439);
+            this.btnAddClass.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnAddClass.Name = "btnAddClass";
-            this.btnAddClass.Size = new System.Drawing.Size(259, 69);
+            this.btnAddClass.Size = new System.Drawing.Size(97, 29);
             this.btnAddClass.TabIndex = 1;
             this.btnAddClass.Text = "Add Class";
             this.btnAddClass.UseVisualStyleBackColor = false;
@@ -76,18 +78,20 @@
             // 
             // TxtClassName
             // 
-            this.TxtClassName.Location = new System.Drawing.Point(38, 386);
+            this.TxtClassName.Location = new System.Drawing.Point(14, 162);
+            this.TxtClassName.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.TxtClassName.Name = "TxtClassName";
-            this.TxtClassName.Size = new System.Drawing.Size(317, 38);
+            this.TxtClassName.Size = new System.Drawing.Size(154, 20);
             this.TxtClassName.TabIndex = 2;
             // 
             // LblClassName
             // 
             this.LblClassName.AutoSize = true;
             this.LblClassName.ForeColor = System.Drawing.Color.White;
-            this.LblClassName.Location = new System.Drawing.Point(41, 334);
+            this.LblClassName.Location = new System.Drawing.Point(15, 140);
+            this.LblClassName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.LblClassName.Name = "LblClassName";
-            this.LblClassName.Size = new System.Drawing.Size(167, 32);
+            this.LblClassName.Size = new System.Drawing.Size(63, 13);
             this.LblClassName.TabIndex = 3;
             this.LblClassName.Text = "Class Name";
             // 
@@ -95,43 +99,48 @@
             // 
             this.TxtDesc.AutoSize = true;
             this.TxtDesc.ForeColor = System.Drawing.Color.White;
-            this.TxtDesc.Location = new System.Drawing.Point(41, 454);
+            this.TxtDesc.Location = new System.Drawing.Point(15, 190);
+            this.TxtDesc.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.TxtDesc.Name = "TxtDesc";
-            this.TxtDesc.Size = new System.Drawing.Size(157, 32);
+            this.TxtDesc.Size = new System.Drawing.Size(60, 13);
             this.TxtDesc.TabIndex = 5;
             this.TxtDesc.Text = "Description";
             // 
             // TxtDescription
             // 
-            this.TxtDescription.Location = new System.Drawing.Point(38, 506);
+            this.TxtDescription.Location = new System.Drawing.Point(14, 212);
+            this.TxtDescription.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.TxtDescription.Name = "TxtDescription";
-            this.TxtDescription.Size = new System.Drawing.Size(404, 38);
+            this.TxtDescription.Size = new System.Drawing.Size(154, 20);
             this.TxtDescription.TabIndex = 4;
             // 
             // LblInstructor
             // 
             this.LblInstructor.AutoSize = true;
             this.LblInstructor.ForeColor = System.Drawing.Color.White;
-            this.LblInstructor.Location = new System.Drawing.Point(41, 611);
+            this.LblInstructor.Location = new System.Drawing.Point(15, 256);
+            this.LblInstructor.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.LblInstructor.Name = "LblInstructor";
-            this.LblInstructor.Size = new System.Drawing.Size(131, 32);
+            this.LblInstructor.Size = new System.Drawing.Size(51, 13);
             this.LblInstructor.TabIndex = 7;
             this.LblInstructor.Text = "Instructor";
             // 
             // TxtInstructor
             // 
-            this.TxtInstructor.Location = new System.Drawing.Point(38, 663);
+            this.TxtInstructor.Location = new System.Drawing.Point(14, 278);
+            this.TxtInstructor.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.TxtInstructor.Name = "TxtInstructor";
-            this.TxtInstructor.Size = new System.Drawing.Size(317, 38);
+            this.TxtInstructor.Size = new System.Drawing.Size(154, 20);
             this.TxtInstructor.TabIndex = 6;
             // 
             // LblSchedule
             // 
             this.LblSchedule.AutoSize = true;
             this.LblSchedule.ForeColor = System.Drawing.Color.White;
-            this.LblSchedule.Location = new System.Drawing.Point(41, 750);
+            this.LblSchedule.Location = new System.Drawing.Point(15, 315);
+            this.LblSchedule.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.LblSchedule.Name = "LblSchedule";
-            this.LblSchedule.Size = new System.Drawing.Size(134, 32);
+            this.LblSchedule.Size = new System.Drawing.Size(52, 13);
             this.LblSchedule.TabIndex = 9;
             this.LblSchedule.Text = "Schedule";
             // 
@@ -139,49 +148,55 @@
             // 
             this.LblCapacity.AutoSize = true;
             this.LblCapacity.ForeColor = System.Drawing.Color.White;
-            this.LblCapacity.Location = new System.Drawing.Point(41, 890);
+            this.LblCapacity.Location = new System.Drawing.Point(15, 373);
+            this.LblCapacity.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.LblCapacity.Name = "LblCapacity";
-            this.LblCapacity.Size = new System.Drawing.Size(125, 32);
+            this.LblCapacity.Size = new System.Drawing.Size(48, 13);
             this.LblCapacity.TabIndex = 11;
             this.LblCapacity.Text = "Capacity";
             // 
             // numericCapacity
             // 
-            this.numericCapacity.Location = new System.Drawing.Point(38, 955);
+            this.numericCapacity.Location = new System.Drawing.Point(14, 400);
+            this.numericCapacity.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.numericCapacity.Name = "numericCapacity";
-            this.numericCapacity.Size = new System.Drawing.Size(170, 38);
+            this.numericCapacity.Size = new System.Drawing.Size(77, 20);
             this.numericCapacity.TabIndex = 12;
             // 
             // TxtSchedule
             // 
-            this.TxtSchedule.Location = new System.Drawing.Point(38, 802);
+            this.TxtSchedule.Location = new System.Drawing.Point(14, 336);
+            this.TxtSchedule.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.TxtSchedule.Name = "TxtSchedule";
-            this.TxtSchedule.Size = new System.Drawing.Size(317, 38);
+            this.TxtSchedule.Size = new System.Drawing.Size(154, 20);
             this.TxtSchedule.TabIndex = 8;
             // 
             // numericDuration
             // 
-            this.numericDuration.Location = new System.Drawing.Point(29, 1112);
+            this.numericDuration.Location = new System.Drawing.Point(11, 466);
+            this.numericDuration.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.numericDuration.Name = "numericDuration";
-            this.numericDuration.Size = new System.Drawing.Size(170, 38);
+            this.numericDuration.Size = new System.Drawing.Size(80, 20);
             this.numericDuration.TabIndex = 14;
             // 
             // LblDuration
             // 
             this.LblDuration.AutoSize = true;
             this.LblDuration.ForeColor = System.Drawing.Color.White;
-            this.LblDuration.Location = new System.Drawing.Point(32, 1047);
+            this.LblDuration.Location = new System.Drawing.Point(12, 439);
+            this.LblDuration.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.LblDuration.Name = "LblDuration";
-            this.LblDuration.Size = new System.Drawing.Size(122, 32);
+            this.LblDuration.Size = new System.Drawing.Size(47, 13);
             this.LblDuration.TabIndex = 13;
             this.LblDuration.Text = "Duration";
             // 
             // btnUpdateClass
             // 
             this.btnUpdateClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
-            this.btnUpdateClass.Location = new System.Drawing.Point(1045, 1047);
+            this.btnUpdateClass.Location = new System.Drawing.Point(392, 439);
+            this.btnUpdateClass.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnUpdateClass.Name = "btnUpdateClass";
-            this.btnUpdateClass.Size = new System.Drawing.Size(259, 69);
+            this.btnUpdateClass.Size = new System.Drawing.Size(97, 29);
             this.btnUpdateClass.TabIndex = 15;
             this.btnUpdateClass.Text = "Update Class";
             this.btnUpdateClass.UseVisualStyleBackColor = false;
@@ -190,9 +205,10 @@
             // btnDeleteClass
             // 
             this.btnDeleteClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
-            this.btnDeleteClass.Location = new System.Drawing.Point(1339, 1047);
+            this.btnDeleteClass.Location = new System.Drawing.Point(502, 439);
+            this.btnDeleteClass.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.btnDeleteClass.Name = "btnDeleteClass";
-            this.btnDeleteClass.Size = new System.Drawing.Size(259, 69);
+            this.btnDeleteClass.Size = new System.Drawing.Size(97, 29);
             this.btnDeleteClass.TabIndex = 16;
             this.btnDeleteClass.Text = "Delete Class";
             this.btnDeleteClass.UseVisualStyleBackColor = false;
@@ -202,9 +218,10 @@
             // 
             this.DashHeaderPanel.BackColor = System.Drawing.Color.Red;
             this.DashHeaderPanel.Controls.Add(this.label1);
-            this.DashHeaderPanel.Location = new System.Drawing.Point(-1, 3);
+            this.DashHeaderPanel.Location = new System.Drawing.Point(0, 1);
+            this.DashHeaderPanel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.DashHeaderPanel.Name = "DashHeaderPanel";
-            this.DashHeaderPanel.Size = new System.Drawing.Size(1954, 152);
+            this.DashHeaderPanel.Size = new System.Drawing.Size(733, 64);
             this.DashHeaderPanel.TabIndex = 33;
             // 
             // label1
@@ -214,18 +231,19 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(18, 48);
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 60);
+            this.label1.Size = new System.Drawing.Size(71, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Classes";
             // 
             // FrmClasses
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(42)))));
-            this.ClientSize = new System.Drawing.Size(1940, 1205);
+            this.ClientSize = new System.Drawing.Size(722, 502);
             this.Controls.Add(this.DashHeaderPanel);
             this.Controls.Add(this.btnDeleteClass);
             this.Controls.Add(this.btnUpdateClass);
@@ -243,6 +261,7 @@
             this.Controls.Add(this.TxtClassName);
             this.Controls.Add(this.btnAddClass);
             this.Controls.Add(this.dgvClasses);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "FrmClasses";
             this.Text = "FrmClasses";
             ((System.ComponentModel.ISupportInitialize)(this.dgvClasses)).EndInit();
