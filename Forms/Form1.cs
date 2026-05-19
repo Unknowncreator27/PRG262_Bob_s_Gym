@@ -107,14 +107,7 @@ namespace PRG262_Bob_s_Gym
             //    txtUsername.Focus();
             //}
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        
-
+                           
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)

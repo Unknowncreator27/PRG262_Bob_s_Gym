@@ -37,7 +37,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.DOBPicker = new System.Windows.Forms.DateTimePicker();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -65,7 +68,7 @@
             this.txtUsername.Location = new System.Drawing.Point(452, 264);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(265, 38);
+            this.txtUsername.Size = new System.Drawing.Size(265, 26);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
@@ -74,7 +77,7 @@
             this.txtPassword.Location = new System.Drawing.Point(452, 357);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(265, 38);
+            this.txtPassword.Size = new System.Drawing.Size(265, 26);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
@@ -85,14 +88,14 @@
             this.loginLbl.BackColor = System.Drawing.Color.Transparent;
             this.loginLbl.Font = new System.Drawing.Font("Engravers MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginLbl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loginLbl.Location = new System.Drawing.Point(132, 48);
+            this.loginLbl.Location = new System.Drawing.Point(100, 40);
             this.loginLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.loginLbl.MaximumSize = new System.Drawing.Size(450, 581);
             this.loginLbl.Name = "loginLbl";
             this.loginLbl.Padding = new System.Windows.Forms.Padding(6);
-            this.loginLbl.Size = new System.Drawing.Size(443, 152);
+            this.loginLbl.Size = new System.Drawing.Size(163, 33);
             this.loginLbl.TabIndex = 3;
-            this.loginLbl.Text = "Welcome to Bob\'s Gym Membership Management platform";
+            this.loginLbl.Text = "Bob\'s Gym";
             // 
             // pictureBox1
             // 
@@ -123,7 +126,7 @@
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(27, 25);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 114);
+            this.pictureBox3.Size = new System.Drawing.Size(68, 64);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
@@ -133,30 +136,67 @@
             this.DOBPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DOBPicker.Location = new System.Drawing.Point(983, 12);
             this.DOBPicker.Name = "DOBPicker";
-            this.DOBPicker.Size = new System.Drawing.Size(200, 38);
+            this.DOBPicker.Size = new System.Drawing.Size(200, 26);
             this.DOBPicker.TabIndex = 11;
             // 
-            // btnExit
+            // label1
             // 
-            this.btnExit.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.btnExit.Font = new System.Drawing.Font("Britannic Bold", 8F);
-            this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit.Location = new System.Drawing.Point(480, 558);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(193, 54);
-            this.btnExit.TabIndex = 12;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(458, 163);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(227, 25);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Sign into your account";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Ebrima", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(459, 228);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 21);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Username";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Ebrima", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(459, 324);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 21);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Password";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Ebrima", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkBox1.Location = new System.Drawing.Point(452, 399);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(146, 25);
+            this.checkBox1.TabIndex = 16;
+            this.checkBox1.Text = "Show Password";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1206, 642);
-            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.DOBPicker);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -187,7 +227,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DateTimePicker DOBPicker;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
