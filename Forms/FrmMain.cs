@@ -59,24 +59,12 @@ namespace PRG262_Bob_s_Gym.Forms
         private void btnManageClasses_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //FrmClasses classes = new FrmClasses();
-            //FrmClasses.ShowDialog();
-            this.Show();
+            FrmClasses classes = new FrmClasses();
+            classes.ShowDialog();
+            this.Close();
+            
         }
 
-        private void btnReports_Click(object sender, EventArgs e)
-        {
-            //FrmReports reports = new FrmReports();
-            //MessageBox.Show
-        }
-
-        private void btnAdminTools_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FrmAdminUnlock adminUnlock = new FrmAdminUnlock();
-            adminUnlock.ShowDialog();
-            this.Show();
-        }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -85,9 +73,10 @@ namespace PRG262_Bob_s_Gym.Forms
 
             if(confirmMessage == DialogResult.Yes)
             {
-                this.Close();
+                this.Hide();
                 loginFrm frm = new loginFrm();
-                frm.Show();
+                frm.ShowDialog();
+                this.Close();
             }
         }
     }

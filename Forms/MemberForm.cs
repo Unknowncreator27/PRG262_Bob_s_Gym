@@ -213,6 +213,13 @@ namespace PRG262_Bob_s_Gym.Forms
                 dtpEndDate.Value = Convert.ToDateTime(row.Cells["MembershipEndDate"].Value);
         }
 
-
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            User user = new User();
+            FrmMain main = new FrmMain(user.Username);
+            this.Hide();
+            main.Show();
+            this.Close();
+        }
     }
 }

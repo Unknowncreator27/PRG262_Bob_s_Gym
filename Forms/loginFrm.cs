@@ -1,6 +1,7 @@
 ﻿using PRG262_Bob_s_Gym.Forms;
 using PRG262_Bob_s_Gym.Models;
 using PRG262_Bob_s_Gym.Themes;
+using PRG262_Bob_s_Gym.Utilities;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -18,25 +19,27 @@ namespace PRG262_Bob_s_Gym
             InitializeComponent();
             SetupForm();
             ApplyTheme();
+            FileHandler handler = new FileHandler();
+            handler.UnlockAccount("admin");
         }
 
         private void SetupForm()
         {
-            
+            loginPassword.UseSystemPasswordChar = true;
             loginBtn.Enabled = false;
+
+            // Default hidden
             LblAccountStatus.Visible = false;
             panelAccountLocked.Visible = false;
+            btnOpenAdminUnlock.Visible = false;
 
-            // Add events important to enable sign in button
+            // Events
             loginUsername.TextChanged += LoginUsername_TextChanged;
             loginPassword.TextChanged += TextFields_TextChanged;
             loginPassword.KeyDown += loginPassword_KeyDown;
             shwPswd.CheckedChanged += shwPswd_CheckedChanged;
 
-            // Check account status when leaving username field
             loginUsername.Leave += loginUsername_Leave;
-
-
         }
 
         private void ApplyTheme()
@@ -44,17 +47,15 @@ namespace PRG262_Bob_s_Gym
             this.BackColor = GymTheme.BackgroundDark;
             this.ForeColor = GymTheme.TextPrimary;
             this.Text = "Bob's Gym — Login";
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-            
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Height = 500;
             this.Width = 600;
 
             HeaderPanel.BackColor = GymTheme.AccentRed;
             HeaderPanel.Height = 80;
-            
-            
-            
+
+            logoLabel.Text = "BG";
+            logoLabel.Font = new Font("Segoe UI", 18f, FontStyle.Bold);
             logoLabel.ForeColor = GymTheme.AccentRed;
             logoLabel.BackColor = Color.White;
 
@@ -74,8 +75,8 @@ namespace PRG262_Bob_s_Gym
             GymTheme.styleCheckBox(shwPswd);
             GymTheme.StyleButton(loginBtn);
 
-            
-            
+            loginBtn.Text = "SIGN IN";
+            loginBtn.Height = 48;
         }
 
         private void TextFields_TextChanged(object sender, EventArgs e)
@@ -104,20 +105,28 @@ namespace PRG262_Bob_s_Gym
                 return;
             }
 
-            var users = FileHandler.GetAllUsers(@"users.txt");
-            currentCheckedUser = users.Find(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
+            try
+            {
+                var users = FileHandler.GetAllUsers(@"users.txt");
+                currentCheckedUser = users.Find(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
 
-            if (currentCheckedUser != null && currentCheckedUser.IsLocked)
-            {
-                ShowLockedStatus();
+                if (currentCheckedUser?.IsLocked == true)
+                {
+                    ShowLockedStatus();
+                }
+                else if (currentCheckedUser != null)
+                {
+                    ShowUnlockedStatus();
+                }
+                else
+                {
+                    ResetStatusIndicator();
+                }
             }
-            else if (currentCheckedUser != null)
-            {
-                ShowUnlockedStatus();
-            }
-            else
+            catch (Exception ex)
             {
                 ResetStatusIndicator();
+                Console.WriteLine($"CheckAccountStatus Error: {ex.Message}");
             }
         }
 
@@ -128,7 +137,7 @@ namespace PRG262_Bob_s_Gym
             LblAccountStatus.Visible = true;
 
             btnOpenAdminUnlock.Visible = true;
-            panelAccountLocked.Visible = true;
+            panelAccountLocked.Visible = true;   // Make sure panel is visible
         }
 
         private void ShowUnlockedStatus()
@@ -148,6 +157,7 @@ namespace PRG262_Bob_s_Gym
             btnOpenAdminUnlock.Visible = false;
         }
 
+        // ================== LOGIN BUTTON ==================
         private void loginBtn_Click(object sender, EventArgs e)
         {
             string username = loginUsername.Text.Trim();
@@ -162,14 +172,10 @@ namespace PRG262_Bob_s_Gym
 
             try
             {
-                User loginUser = new User
-                {
-                    Username = username,
-                    Password = password
-                };
-
+                User loginUser = new User { Username = username, Password = password };
                 string result = fileHandler.ValidateLogin(loginUser);
 
+                // ... (your switch statement is fine, keeping it as is)
                 switch (result)
                 {
                     case "success":
@@ -198,7 +204,6 @@ namespace PRG262_Bob_s_Gym
                             MessageBox.Show("Invalid username or password.", "Login Failed",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                         loginPassword.Clear();
                         loginPassword.Focus();
                         break;
@@ -211,6 +216,7 @@ namespace PRG262_Bob_s_Gym
             }
         }
 
+        // Keep your other methods (KeyDown, Show Password, Admin Unlock)
         private void loginPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && loginBtn.Enabled)

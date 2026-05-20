@@ -146,6 +146,7 @@
             this.logoLabel.AutoSize = true;
             this.logoLabel.BackColor = System.Drawing.Color.White;
             this.logoLabel.Font = new System.Drawing.Font("Segoe UI", 14.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.logoLabel.Location = new System.Drawing.Point(43, 30);
             this.logoLabel.Margin = new System.Windows.Forms.Padding(3);
             this.logoLabel.MaximumSize = new System.Drawing.Size(100, 100);
@@ -161,7 +162,7 @@
             // 
             this.gymSubLabel.AutoSize = true;
             this.gymSubLabel.Font = new System.Drawing.Font("Segoe UI", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gymSubLabel.ForeColor = System.Drawing.Color.White;
+            this.gymSubLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.gymSubLabel.Location = new System.Drawing.Point(169, 89);
             this.gymSubLabel.Name = "gymSubLabel";
             this.gymSubLabel.Size = new System.Drawing.Size(458, 38);
@@ -214,8 +215,10 @@
             this.Controls.Add(this.loginPassword);
             this.Controls.Add(this.loginUsername);
             this.Controls.Add(this.loginBtn);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Name = "loginFrm";
-            this.Text = "loginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Bob\'s Gym — Login";
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.panelAccountLocked.ResumeLayout(false);

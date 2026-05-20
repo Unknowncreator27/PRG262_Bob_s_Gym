@@ -46,6 +46,7 @@
             this.btnDeleteClass = new System.Windows.Forms.Button();
             this.DashHeaderPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClasses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCapacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDuration)).BeginInit();
@@ -66,6 +67,7 @@
             // btnAddClass
             // 
             this.btnAddClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
+            this.btnAddClass.ForeColor = System.Drawing.Color.White;
             this.btnAddClass.Location = new System.Drawing.Point(754, 1047);
             this.btnAddClass.Name = "btnAddClass";
             this.btnAddClass.Size = new System.Drawing.Size(259, 69);
@@ -179,6 +181,7 @@
             // btnUpdateClass
             // 
             this.btnUpdateClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
+            this.btnUpdateClass.ForeColor = System.Drawing.Color.White;
             this.btnUpdateClass.Location = new System.Drawing.Point(1045, 1047);
             this.btnUpdateClass.Name = "btnUpdateClass";
             this.btnUpdateClass.Size = new System.Drawing.Size(259, 69);
@@ -190,6 +193,7 @@
             // btnDeleteClass
             // 
             this.btnDeleteClass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
+            this.btnDeleteClass.ForeColor = System.Drawing.Color.White;
             this.btnDeleteClass.Location = new System.Drawing.Point(1339, 1047);
             this.btnDeleteClass.Name = "btnDeleteClass";
             this.btnDeleteClass.Size = new System.Drawing.Size(259, 69);
@@ -216,9 +220,21 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(18, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 60);
+            this.label1.Size = new System.Drawing.Size(165, 59);
             this.label1.TabIndex = 1;
             this.label1.Text = "Classes";
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(1617, 1047);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(259, 69);
+            this.btnBack.TabIndex = 34;
+            this.btnBack.Text = "Back To Main";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // FrmClasses
             // 
@@ -226,6 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1940, 1205);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.DashHeaderPanel);
             this.Controls.Add(this.btnDeleteClass);
             this.Controls.Add(this.btnUpdateClass);
@@ -244,7 +261,7 @@
             this.Controls.Add(this.btnAddClass);
             this.Controls.Add(this.dgvClasses);
             this.Name = "FrmClasses";
-            this.Text = "FrmClasses";
+            this.Text = "Bob\'s Gym - Manage Classes & Training Programs";
             ((System.ComponentModel.ISupportInitialize)(this.dgvClasses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCapacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericDuration)).EndInit();
@@ -275,5 +292,6 @@
         private System.Windows.Forms.Button btnDeleteClass;
         private System.Windows.Forms.Panel DashHeaderPanel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

@@ -56,6 +56,7 @@
             this.DashHeaderPanel = new System.Windows.Forms.Panel();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtMembershipID = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.DashHeaderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -235,7 +236,7 @@
             // 
             // createBtn
             // 
-            this.createBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.createBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.createBtn.Font = new System.Drawing.Font("Britannic Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.createBtn.Location = new System.Drawing.Point(608, 542);
@@ -248,7 +249,7 @@
             // 
             // readBtn
             // 
-            this.readBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.readBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.readBtn.Font = new System.Drawing.Font("Britannic Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.readBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.readBtn.Location = new System.Drawing.Point(757, 542);
@@ -261,7 +262,7 @@
             // 
             // update
             // 
-            this.update.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.update.Font = new System.Drawing.Font("Britannic Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.update.Location = new System.Drawing.Point(901, 542);
@@ -274,7 +275,7 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.deleteBtn.Font = new System.Drawing.Font("Britannic Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.deleteBtn.Location = new System.Drawing.Point(1035, 542);
@@ -330,7 +331,7 @@
             // 
             // exitBtn
             // 
-            this.exitBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.exitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
             this.exitBtn.Font = new System.Drawing.Font("Britannic Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.exitBtn.Location = new System.Drawing.Point(1165, 542);
@@ -364,11 +365,25 @@
             this.txtMembershipID.Size = new System.Drawing.Size(200, 38);
             this.txtMembershipID.TabIndex = 33;
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(16)))), ((int)(((byte)(46)))));
+            this.btnBack.Font = new System.Drawing.Font("Britannic Bold", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBack.Location = new System.Drawing.Point(608, 591);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(75, 37);
+            this.btnBack.TabIndex = 34;
+            this.btnBack.Text = "Back To Main";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // MemberForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(1266, 700);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.txtMembershipID);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.DashHeaderPanel);
@@ -397,7 +412,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "MemberForm";
-            this.Text = "MemberForm";
+            this.Text = "Add Members";
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.DashHeaderPanel.ResumeLayout(false);
             this.DashHeaderPanel.PerformLayout();
@@ -435,5 +450,6 @@
         private System.Windows.Forms.Panel DashHeaderPanel;
         private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.TextBox txtMembershipID;
+        private System.Windows.Forms.Button btnBack;
     }
 }
