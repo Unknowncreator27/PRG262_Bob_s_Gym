@@ -25,7 +25,7 @@ namespace PRG262_Bob_s_Gym
 
         private void SetupForm()
         {
-            loginPassword.UseSystemPasswordChar = true;
+            
             loginBtn.Enabled = false;
 
             // Default hidden
@@ -44,39 +44,16 @@ namespace PRG262_Bob_s_Gym
 
         private void ApplyTheme()
         {
-            this.BackColor = GymTheme.BackgroundDark;
-            this.ForeColor = GymTheme.TextPrimary;
-            this.Text = "Bob's Gym — Login";
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.Height = 500;
             this.Width = 600;
 
-            HeaderPanel.BackColor = GymTheme.AccentRed;
-            HeaderPanel.Height = 80;
-
-            logoLabel.Text = "BG";
-            logoLabel.Font = new Font("Segoe UI", 18f, FontStyle.Bold);
-            logoLabel.ForeColor = GymTheme.AccentRed;
-            logoLabel.BackColor = Color.White;
-
-            gymNameLabel.Text = "Bob's Gym";
-            gymNameLabel.ForeColor = Color.White;
-
-            gymSubLabel.Text = "Membership Management Platform";
-            gymSubLabel.ForeColor = Color.FromArgb(220, 255, 255, 255);
-
-            loginLbl.Text = "Sign in to your account";
-            loginLbl.ForeColor = GymTheme.White;
-
-            GymTheme.StyleLabel(LblUsername, isMuted: true);
-            GymTheme.StyleLabel(LblPassword, isMuted: true);
             GymTheme.StyleTextBox(loginUsername);
             GymTheme.StyleTextBox(loginPassword);
             GymTheme.styleCheckBox(shwPswd);
             GymTheme.StyleButton(loginBtn);
 
-            loginBtn.Text = "SIGN IN";
-            loginBtn.Height = 48;
+            //loginBtn.Text = "SIGN IN";
+            //loginBtn.Height = 48;
         }
 
         private void TextFields_TextChanged(object sender, EventArgs e)

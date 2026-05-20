@@ -11,16 +11,6 @@ namespace PRG262_Bob_s_Gym.Forms
         public FrmAdminPasswordPrompt()
         {
             InitializeComponent();
-            SetupForm();
-        }
-
-        private void SetupForm()
-        {
-            this.Text = "Admin Verification";
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
 
             txtAdminPassword.Focus();
         }

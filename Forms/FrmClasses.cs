@@ -1,5 +1,6 @@
 ﻿using PRG262_Bob_s_Gym.Classes;
 using PRG262_Bob_s_Gym.DataAccess;
+using PRG262_Bob_s_Gym.Exceptions;
 using PRG262_Bob_s_Gym.Models;
 using System;
 using System.Data;
@@ -23,6 +24,9 @@ namespace PRG262_Bob_s_Gym.Forms
             {
                 DataTable dt = classDAO.GetAllClasses();
                 dgvClasses.DataSource = dt;
+            } catch(CustomExceptions.ClassCapacityReachedException ccre)
+            {
+                MessageBox.Show(ccre);
             }
             catch (Exception ex)
             {

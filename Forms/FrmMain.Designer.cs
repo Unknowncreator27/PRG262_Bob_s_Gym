@@ -114,7 +114,8 @@
             this.Controls.Add(this.DashHeaderPanel);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FrmMain";
-            this.Text = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Bob\'s Gym - Management Dashboard";
             this.DashHeaderPanel.ResumeLayout(false);
             this.DashHeaderPanel.PerformLayout();
             this.ResumeLayout(false);

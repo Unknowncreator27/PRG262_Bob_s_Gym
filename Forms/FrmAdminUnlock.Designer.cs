@@ -88,7 +88,7 @@
             this.Controls.Add(this.dgvLockedAccounts);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FrmAdminUnlock";
-            this.Text = "FrmAdminUnlock";
+            this.Text = "Admin Unlock";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLockedAccounts)).EndInit();
             this.ResumeLayout(false);
 

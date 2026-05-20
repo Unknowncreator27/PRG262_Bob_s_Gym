@@ -19,34 +19,12 @@ namespace PRG262_Bob_s_Gym.Forms
         {
             InitializeComponent();
             currentUser = username;
-            SetupDash();
-            ApplyTheme();
-        }
-
-        private void SetupDash()
-        {
-            this.Text = "Bob's Gym - Management Dashboard";
-            this.StartPosition = FormStartPosition.CenterScreen;
-            //this.WindowState = FormWindowState.Maximized;
-
-
             // Welcome message
             LblUsername.Text = currentUser;
-            
         }
-        private void ApplyTheme()
-        {
-            this.ForeColor = GymTheme.BackgroundDark;
-            this.ForeColor = GymTheme.TextPrimary;
 
-            if(DashHeaderPanel != null)
-            {
-                DashHeaderPanel.BackColor = GymTheme.AccentRed;
-                DashHeaderPanel.Height = 80;
-            }
 
-            
-        }
+
 
         private void btnManageMembers_Click(object sender, EventArgs e)
         {

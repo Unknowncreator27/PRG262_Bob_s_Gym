@@ -88,8 +88,10 @@
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.txtAdminPassword);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FrmAdminPasswordPrompt";
-            this.Text = "FrmAdminPasswordPrompt";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Admin Verification";
             this.ResumeLayout(false);
             this.PerformLayout();
 

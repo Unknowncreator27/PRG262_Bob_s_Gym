@@ -18,15 +18,12 @@ namespace PRG262_Bob_s_Gym.Forms
         {
             InitializeComponent();
             LoadLockedAccounts();
-            ApplyTheme();
+            this.Width = 500;
+            this.Height = 500;
         }
 
         private void ApplyTheme()
         {
-            this.BackColor = GymTheme.BackgroundDark;
-            this.Width = 500;
-            this.Height = 500;
-
             // buttons
             GymTheme.StyleButton(UnlockBtn);
             GymTheme.StyleButton(UnlockAllBtn);
